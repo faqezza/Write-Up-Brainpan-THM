@@ -1,4 +1,4 @@
-![Captura de Tela (49)](https://github.com/user-attachments/assets/b95e607a-eb9c-48e0-93de-b7ca2ed46381)<h1>Brainpan 1</h1>
+<h1>Brainpan 1</h1>
 
 <h1>"Reverse engineer a Windows executable, find a buffer overflow and exploit it on a Linux machine."</h1>
 
