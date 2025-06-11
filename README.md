@@ -54,6 +54,7 @@ Ao ser um executavel para windows vamos copialo para nossa maquina windows e com
 
 
 Analisando ele no IDA vemos algumas strings interesantes. 
+
 ![Captura de Tela (49)](https://github.com/user-attachments/assets/aeef5396-3714-4fcc-887c-3dd214e57995)
 
 
@@ -63,9 +64,44 @@ no pseudo code nao achamos nada demais mas podemos verificar como a app cria a c
 
 Testanto a string "shitstorm" confirmamos que é a senha correta mas ao inserila nada acontece.
 
+![Captura de Tela (55)](https://github.com/user-attachments/assets/90003995-5770-441c-8be8-ba1bdf443d80)
+
+
 Segundo o enunciado do desafio teremos que praticar um Buffer Overflow no alvo, entao vamos partir para uma analise dinamica.
 
+Vamos criar um pattern para identificar apos quantos bytes atingimos o endereco de retorno para isso utilizei o:
+- https://wiremask.eu/tools/buffer-overflow-pattern-generator/
 
 
 
 
+
+![Captura de Tela (50)](https://github.com/user-attachments/assets/5991aa79-1d53-4c09-998d-280baa243d8d)
+No screenshot acima podemos ver o breakpoint setado na hora que é chamada a funcao string comparar que vai comparar os valores que estao no topo da stack(nosso imput e a string "shitstorm")
+
+
+
+
+![Captura de Tela (51)](https://github.com/user-attachments/assets/0c3ddbc0-5dcd-4c7e-835b-a40ca6f15843)
+
+Agora sim o endereco de retorno foi sobre escrito com o valor 35724134.
+
+
+
+![Captura de Tela (52)](https://github.com/user-attachments/assets/d9bd3e3d-271a-4b7d-a4c7-5dcff8b63593)  
+
+
+Vemos que apos 524 Bytes atingimos o endereco de retorno.
+
+
+
+Vamos mandar entao 524 'A' + 'BBBB' (RET) para ver como esta a pilha na hora do retorno.
+
+![Captura de Tela (53)](https://github.com/user-attachments/assets/fd92b1cc-986c-4a6b-b1f2-023932b559d4)
+
+
+![Captura de Tela (54)](https://github.com/user-attachments/assets/f35cc097-345d-4422-8996-e9624fc34ac3)
+
+Legal agora temos no ESP nosso RET e vemos que o nosso shellcode estaria no endereco 005FFB30.
+
+Entao o que poderiamos fazer agora....
