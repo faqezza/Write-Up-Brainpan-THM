@@ -95,13 +95,21 @@ Vemos que apos 524 Bytes atingimos o endereco de retorno.
 
 
 
-Vamos mandar entao 524 'A' + 'BBBB' (RET) para ver como esta a pilha na hora do retorno.
-
-![Captura de Tela (53)](https://github.com/user-attachments/assets/fd92b1cc-986c-4a6b-b1f2-023932b559d4)
+Vamos mandar entao 524 'A' + 'BBBB'(RET) + 'CCCCCCCC'(que seria nosso shellcode) para ver como esta a pilha na hora do retorno.
 
 
-![Captura de Tela (54)](https://github.com/user-attachments/assets/f35cc097-345d-4422-8996-e9624fc34ac3)
+![Captura de Tela (56)](https://github.com/user-attachments/assets/c89f6f5f-f617-4e34-a637-408b78c2bf75)
 
-Legal agora temos no ESP nosso RET e vemos que o nosso shellcode estaria no endereco 005FFB30.
 
-Entao o que poderiamos fazer agora....
+
+
+Legal agora temos no ESP nosso RET e vemos que o nosso shellcode estaria na stack no endereço 005FF910.
+
+Agora vamos ver no Inmunity Debuger junto com o Mona se o executavel tem algum tipo de protecao e quais dll's carrega.
+
+![Captura de Tela (57)](https://github.com/user-attachments/assets/5965bf0f-6c16-428a-b3e1-af7b15b6a51a)
+
+
+conferimos que o unico midulo sem nehum tipo de protecao é o propio executavel.
+
+Vamos partir para a escrita do exploit.
