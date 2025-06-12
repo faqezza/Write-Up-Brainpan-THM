@@ -77,11 +77,6 @@ Procurando por comandos similares no x64Dbg, achamos um `JMP ESP` no endereço `
 
 
 
-Nosso exploit ficara entao assim:
-
-![Captura de Tela (59)](https://github.com/user-attachments/assets/5af194e7-a5d3-4cdd-a240-220c8c38d6fe)
-
-
 Vamos agora criar um shellcode com o msfvenom para ter um reverse shell no alvo que é linux.
 
 ![Captura de Tela (46)](https://github.com/user-attachments/assets/c7cc227f-b133-4043-a27a-b07b7aa2ca13)
