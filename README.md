@@ -77,6 +77,24 @@ Procurando por comandos similares no x64Dbg, achamos um `JMP ESP` no endereço `
 
 
 
-Vamos agora criar um shellcode com o msfvenom para ter um reverse shell no alvo que é linux.
+Vamos agora criar um shellcode com o msfvenom para ter um reverse shell no alvo, que é uma máquina Linux.
 
 ![Captura de Tela (46)](https://github.com/user-attachments/assets/c7cc227f-b133-4043-a27a-b07b7aa2ca13)
+
+Já com nosso shellcode, vamos criar nosso exploit em Python. Vamos precisar criar uma conexão com o alvo utilizando a biblioteca socket.
+
+![Captura de Tela (61)](https://github.com/user-attachments/assets/ad5fa143-8585-4a6e-94f5-8e98cc97d537)
+
+A estrutura do nosso código fica assim: 524 'A' para encher o espaço de memória + endereço de retorno (JMP ESP) + 16 NOPs + nosso shellcode + \n (enter)
+
+![Captura de Tela (60)](https://github.com/user-attachments/assets/f2739dd8-54da-4501-b298-9be375bf0cb5)
+
+Beleza! Conseguimos nossa shell. Agora, vamos escalar privilégios para o usuário root.
+
+Usamos o comando sudo -l para listar os comandos que o usuário atual tem permissão para executar com sudo, sem a necessidade de efetivamente executá-los.
+
+![Captura de Tela (62)](https://github.com/user-attachments/assets/a6be315a-d444-42fb-89de-d343f0f8984f)
+
+Vemos que temos um binário que é executado como root. Ao ser chamado, ele mostra o seu uso. Vamos utilizar o manual de algum comando aleatório para depois chamar !/bin/bash e conseguir nossa shell de root.
+
+![Captura de Tela (64)](https://github.com/user-attachments/assets/143c6115-e762-4171-87be-a87f4cc595e3)
