@@ -91,10 +91,10 @@ A estrutura do nosso código fica assim: 524 'A' para encher o espaço de memór
 
 Beleza! Conseguimos nossa shell. Agora, vamos escalar privilégios para o usuário root.
 
-Usamos o comando sudo -l para listar os comandos que o usuário atual tem permissão para executar com sudo, sem a necessidade de efetivamente executá-los.
+Usamos o comando `sudo -l` para listar os comandos que o usuário atual tem permissão para executar com sudo.
 
 ![Captura de Tela (62)](https://github.com/user-attachments/assets/a6be315a-d444-42fb-89de-d343f0f8984f)
 
-Vemos que temos um binário que é executado como root. Ao ser chamado, ele mostra o seu uso. Vamos utilizar o manual de algum comando aleatório para depois chamar !/bin/bash e conseguir nossa shell de root.
+Vemos que temos um binário que é executado como root. Ao ser chamado, ele mostra o seu uso. Vamos utilizar o manual de algum comando aleatório para depois chamar `!/bin/bash` e conseguir nossa shell de root.
 
 ![Captura de Tela (64)](https://github.com/user-attachments/assets/143c6115-e762-4171-87be-a87f4cc595e3)
